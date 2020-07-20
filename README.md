@@ -8,4 +8,4 @@ How to run
 
 3. `docker build -t stef/test_project .`
 
-4. `docker run -p 8889:8888 stef/test_project`
+4. `docker run -p 8888:8888 stef/test_project`
