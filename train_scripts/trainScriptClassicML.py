@@ -27,7 +27,7 @@ from sklearn.metrics import roc_auc_score
 
 # Read data 
 df = pd.read_csv("./data/train.csv/train.csv")
-df_test = pd.read_csv('../input/skill-task2/test.csv/test.csv')
+df_test = pd.read_csv('./data/test.csv/test.csv')
 
 
 
