@@ -27,6 +27,7 @@ from sklearn.metrics import roc_auc_score
 
 # Read data 
 df = pd.read_csv("./data/train.csv/train.csv")
+df_test = pd.read_csv('../input/skill-task2/test.csv/test.csv')
 
 
 
@@ -77,3 +78,26 @@ plt.axis('tight')
 plt.ylabel('True Positive Rate')
 plt.xlabel('False Positive Rate')
 plt.savefig('./aucClassicML.jpg')
+
+
+# Train using all data
+models_ens = list(zip(['SVM', 'XGB', 'RF'], models))
+model_ens = VotingClassifier(estimators = models_ens, voting = 'soft')
+model_ens.fit(X_std, y)
+
+
+# Replace inf values with np.nan, then replace nan with 0
+df_test.replace([np.inf, -np.inf], np.nan,inplace=True)
+df_test = df_test.fillna(0) 
+
+# Features
+X_submission = df_test.drop(['sample_id'], axis=1)
+
+X_submission_std = features_norm.fit_transform(X_submission) 
+
+answ = model_ens.predict_proba(X_submission_std)[:,1]
+
+submission = pd.DataFrame(df_test["sample_id"], index=None)
+submission["y"] = answ
+submission.to_csv("submission_voting_classifier.csv", sep=",", index=False)
+submission.head()
