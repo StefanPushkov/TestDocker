@@ -1,7 +1,9 @@
 pandas
 scikit-learn
-joblib
 numpy
+xgboost
+torch
+torchvision
 numpy
 matplotlib
 seaborn

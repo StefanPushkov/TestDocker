@@ -12,7 +12,6 @@ COPY . .
 RUN pip3 install -r requirements.txt
 RUN pip3 install jupyter    
 
-RUN python3 data_preprocess/preprocessing.py
 
 RUN python3 train_scripts/trainScriptClassicML.py
 RUN python3 train_scripts/trainScriptNN.py
