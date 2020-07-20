@@ -195,7 +195,7 @@ if __name__ == '__main__':
     # Create submission
     submission = pd.DataFrame(df_test["sample_id"], index=None)
     submission["y"] = a
-    submission.to_csv("./Stef_sabmission.csv", sep=",", index=False)
+    submission.to_csv("./Network_sabmission.csv", sep=",", index=False)
 
     print("Submission created (NN).")
     
